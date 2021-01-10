@@ -19,7 +19,10 @@
 #'   calculated in \code{\link{airdas_effort}}
 #' @param num.cores See \code{\link{airdas_effort}}
 #' 
-#' @details This function is intended to only be called by \code{\link{airdas_effort}} 
+#' @details WARNING - do not call this function directly!
+#'   It is exported for documentation purposes, but is intended for internal package use only.
+#'
+#'   This function is intended to only be called by \code{\link{airdas_effort}} 
 #'   when the "equallength" method is specified. 
 #'   Thus, \code{x} must be filtered for events (rows) where either
 #'   the 'OnEffort' column is \code{TRUE} or the 'Event' column is either "E" or "O"; 
@@ -85,8 +88,6 @@
 #'   \item randpicks: data frame with record of length allocations 
 #'     (see Details section above)
 #' }
-#' 
-#' @keywords internal
 #' 
 #' @export
 airdas_chop_equallength <- function(x, ...) UseMethod("airdas_chop_equallength")

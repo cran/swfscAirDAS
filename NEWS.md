@@ -1,3 +1,10 @@
+# swfscAirDAS 0.2.2
+
+* The 'segdata' output of `das_effort` now includes DateTime1 and DateTime2, the date/time of the start and end points of each segment. The column order of the segdata data frame was also slightly changed for consistency
+
+* `airdas_chop_condition`, `airdas_chop_equallength`, `airdas_chop_section`, and `airdas_segdata` are now exported for documentation purposes only
+
+
 # swfscAirDAS 0.2.1
 
 * Users can now capitalize all transect codes using the `trans.upper` argument in `das_process`

@@ -18,7 +18,10 @@
 #' @param section.id numeric; the ID of \code{x} (the current continuous effort section)
 #' @param ... ignored
 #' 
-#' @details This function was designed to be called by one of the airdas_chop_ functions, 
+#' @details WARNING - do not call this function directly!
+#'   It is exported for documentation purposes, but is intended for internal package use only.
+#'
+#'   This function was designed to be called by one of the airdas_chop_ functions, 
 #'   e.g. \code{\link{airdas_chop_equallength}}, and thus 
 #'   users should avoid calling it themselves.
 #'   It loops through the events in \code{x}, calculating and storing relevant
@@ -27,7 +30,8 @@
 #'   a "T" or "R" event and end with the corresponding "E" or "O" event.
 #' 
 #'   For each segment, this function reports the 
-#'   segment ID, transect code, the start/end/midpoints (lat/lon), segment length, 
+#'   segment ID, transect code, the start/end/mid coordinates (lat/lon),
+#'   start/end/mid date/times (DateTime), segment length, 
 #'   year, month, day, time, observers, 
 #'   and average conditions (which are specified by \code{conditions}).
 #'   The segment ID is designated as \code{section.id} _ index of the modeling segment.
@@ -57,8 +61,6 @@
 #'   
 #' @return Data frame with the segdata information described above
 #'   and in \code{\link{airdas_effort}}
-#' 
-#' @keywords internal
 #' 
 #' @export
 airdas_segdata <- function(x, ...) UseMethod("airdas_segdata")
@@ -126,8 +128,9 @@ airdas_segdata.airdas_df <- function(x, conditions, segdata.method = c("avg", "m
     select(.data$seg_idx, .data$section_id, .data$section_sub_id, 
            .data$event, .data$transect, 
            .data$file, .data$stlin, .data$endlin, 
-           .data$lat1, .data$lon1, .data$lat2, .data$lon2, 
-           .data$mlat, .data$mlon, .data$dist, 
-           .data$mDateTime, .data$year, .data$month, .data$day, .data$mtime, 
+           .data$lat1, .data$lon1, .data$DateTime1, 
+           .data$lat2, .data$lon2, .data$DateTime2, 
+           .data$mlat, .data$mlon, .data$mDateTime, 
+           .data$dist, .data$year, .data$month, .data$day, .data$mtime, 
            everything())
 }

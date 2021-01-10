@@ -49,7 +49,10 @@ Data frame with the segdata information described above
 Summarize AirDAS effort data by effort segment, while averaging conditions
 }
 \details{
-This function was designed to be called by one of the airdas_chop_ functions, 
+WARNING - do not call this function directly!
+  It is exported for documentation purposes, but is intended for internal package use only.
+
+  This function was designed to be called by one of the airdas_chop_ functions, 
   e.g. \code{\link{airdas_chop_equallength}}, and thus 
   users should avoid calling it themselves.
   It loops through the events in \code{x}, calculating and storing relevant
@@ -58,7 +61,8 @@ This function was designed to be called by one of the airdas_chop_ functions,
   a "T" or "R" event and end with the corresponding "E" or "O" event.
 
   For each segment, this function reports the 
-  segment ID, transect code, the start/end/midpoints (lat/lon), segment length, 
+  segment ID, transect code, the start/end/mid coordinates (lat/lon),
+  start/end/mid date/times (DateTime), segment length, 
   year, month, day, time, observers, 
   and average conditions (which are specified by \code{conditions}).
   The segment ID is designated as \code{section.id} _ index of the modeling segment.
@@ -86,4 +90,3 @@ This function was designed to be called by one of the airdas_chop_ functions,
   are used to calculate the segment start, mid, and end points,
   with \code{method = "vincenty"}.
 }
-\keyword{internal}

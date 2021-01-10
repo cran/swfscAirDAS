@@ -42,7 +42,10 @@ See \code{\link{airdas_chop_equallength}}.
 Chop AirDAS data into effort segments by continuous effort section
 }
 \details{
-This function is simply a wrapper for \code{\link{airdas_chop_equallength}}.
+WARNING - do not call this function directly!
+  It is exported for documentation purposes, but is intended for internal package use only.
+
+  This function is simply a wrapper for \code{\link{airdas_chop_equallength}}.
   It calls \code{\link{airdas_chop_equallength}}, with \code{seg.km} set to a 
   value larger than the longest continuous effort section in \code{x}. 
   Thus, the effort is 'chopped' into the continuous effort sections and then summarized.
@@ -68,4 +71,3 @@ y.eff2 <- airdas_effort(y.proc, method = "section", num.cores = 1)
 all.equal(y.eff1, y.eff2)
 
 }
-\keyword{internal}

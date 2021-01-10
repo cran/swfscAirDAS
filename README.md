@@ -5,10 +5,11 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/smwoodman/swfscAirDAS.svg?branch=master)](https://travis-ci.com/smwoodman/swfscAirDAS)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/smwoodman/swfscAirDAS?branch=master&svg=true)](https://ci.appveyor.com/project/smwoodman/swfscAirDAS)
+[![CRAN
+version](http://www.r-pkg.org/badges/version/swfscAirDAS)](https://cran.r-project.org/package=swfscAirDAS)
+[![R-CMD-check](https://github.com/smwoodman/swfscAirDAS/workflows/R-CMD-check/badge.svg)](https://github.com/smwoodman/swfscAirDAS/actions)
+<!-- [![Travis build status](https://travis-ci.com/smwoodman/swfscAirDAS.svg?branch=master)](https://travis-ci.com/smwoodman/swfscAirDAS) -->
+<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/smwoodman/swfscAirDAS?branch=master&svg=true)](https://ci.appveyor.com/project/smwoodman/swfscAirDAS) -->
 <!-- badges: end -->
 
 This package contains functions designed for processing and analyzing
@@ -24,33 +25,25 @@ estimation. Learn more in `vignette("swfscAirDAS")`
 
 ## Installation
 
-You can install swfscAirDAS from [GitHub](https://github.com) with:
+You can install the released version of swfscAirDAS from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("swfscAirDAS")
+```
+
+You can install the developmental version of swfscAirDAS from
+[GitHub](https://github.com/). To use the development version of
+swfscAirDAS, it is recommended to install the development version of
+[swfscDAS](https://smwoodman.github.io/swfscDAS/index.html) as well:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("smwoodman/swfscDAS")
+remotes::install_github("smwoodman/swfscDAS", build_vignettes = TRUE)
 remotes::install_github("smwoodman/swfscAirDAS", build_vignettes = TRUE)
 ```
 
-Note that swfscAirDAS depends on swfscDAS, and thus you should ensure
-that [swfscDAS](https://smwoodman.github.io/swfscDAS/) is installed and
-updated as well. Running the above code will ensure the latest versions
-of both packages are installed. However, if you want to force an
-installation, you can run:
-
-``` r
-remotes::install_github("smwoodman/swfscDAS", force = TRUE)
-remotes::install_github("smwoodman/swfscAirDAS", force = TRUE)
-```
-
-Before installing swfscAirDAS, you must have
-[R](https://www.r-project.org/),
-[RStudio](https://rstudio.com/products/rstudio/download/#download), and
-the appropriate version of
-[Rtools](https://cran.r-project.org/bin/windows/Rtools/) installed. It
-is best practice to install after closing all instances of R and
-RStudio, and then running the install code from the R GUI rather than
-RStudio. Please contact the developer if you have any issues.
+Please contact the developer if you have any issues.
 
 ## AirDAS format and checks
 

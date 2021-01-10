@@ -31,6 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
@@ -120,6 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -456,27 +466,27 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; 4      4          2              2     R       T1 airdas_sample.das    41</span></span>
 <span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; 5      5          2              3     R       T1 airdas_sample.das    44</span></span>
 <span id="cb7-16"><a href="#cb7-16"></a><span class="co">#&gt; 6      6          3              1     T       T2 airdas_sample.das    53</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt;   endlin     lat1      lon1     lat2      lon2     mlat      mlon    dist</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt; 1     36 39.23550 -123.1563 39.23400 -123.4033 39.23309 -123.2797 21.2882</span></span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt; 2     37 39.23400 -123.4033 39.23400 -123.4047 39.23400 -123.4040  0.1148</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt; 3     41 39.23400 -123.4742 39.23333 -123.4914 39.23367 -123.4828  1.4937</span></span>
-<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt; 4     44 39.23333 -123.4914 39.23317 -123.5143 39.23317 -123.5029  1.9657</span></span>
-<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt; 5     49 39.23317 -123.5143 39.23283 -123.6032 39.23245 -123.5588  7.6620</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt; 6     78 39.22000 -123.6078 39.21683 -123.3605 39.21667 -123.4842 21.3146</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;             mDateTime year month day    mtime maxdistBft maxdistCCover nSI_bm</span></span>
-<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt; 1 2015-04-09 12:34:28 2015     4   9 12:34:28          1            10      3</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt; 2 2015-04-09 12:37:58 2015     4   9 12:37:58          2            10      0</span></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt; 3 2015-04-09 12:40:14 2015     4   9 12:40:14          2            10      0</span></span>
-<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt; 4 2015-04-09 12:40:48 2015     4   9 12:40:48          2            20      0</span></span>
-<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 5 2015-04-09 12:42:25 2015     4   9 12:42:25          1            20      0</span></span>
-<span id="cb7-30"><a href="#cb7-30"></a><span class="co">#&gt; 6 2015-04-09 12:50:27 2015     4   9 12:50:27          1            20      3</span></span>
-<span id="cb7-31"><a href="#cb7-31"></a><span class="co">#&gt;   ANI_bm nSI_dc ANI_dc</span></span>
-<span id="cb7-32"><a href="#cb7-32"></a><span class="co">#&gt; 1     11      1      1</span></span>
-<span id="cb7-33"><a href="#cb7-33"></a><span class="co">#&gt; 2      0      0      0</span></span>
-<span id="cb7-34"><a href="#cb7-34"></a><span class="co">#&gt; 3      0      0      0</span></span>
-<span id="cb7-35"><a href="#cb7-35"></a><span class="co">#&gt; 4      0      0      0</span></span>
-<span id="cb7-36"><a href="#cb7-36"></a><span class="co">#&gt; 5      0      0      0</span></span>
-<span id="cb7-37"><a href="#cb7-37"></a><span class="co">#&gt; 6     13      0      0</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt;   endlin     lat1      lon1           DateTime1     lat2      lon2</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt; 1     36 39.23550 -123.1563 2015-04-09 12:30:59 39.23400 -123.4033</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt; 2     37 39.23400 -123.4033 2015-04-09 12:37:57 39.23400 -123.4047</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt; 3     41 39.23400 -123.4742 2015-04-09 12:40:00 39.23333 -123.4914</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt; 4     44 39.23333 -123.4914 2015-04-09 12:40:28 39.23317 -123.5143</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt; 5     49 39.23317 -123.5143 2015-04-09 12:41:08 39.23283 -123.6032</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt; 6     78 39.22000 -123.6078 2015-04-09 12:46:51 39.21683 -123.3605</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;             DateTime2     mlat      mlon           mDateTime    dist year month</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt; 1 2015-04-09 12:37:57 39.23309 -123.2797 2015-04-09 12:34:28 21.2882 2015     4</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt; 2 2015-04-09 12:38:00 39.23400 -123.4040 2015-04-09 12:37:58  0.1148 2015     4</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt; 3 2015-04-09 12:40:28 39.23367 -123.4828 2015-04-09 12:40:14  1.4937 2015     4</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt; 4 2015-04-09 12:41:08 39.23317 -123.5029 2015-04-09 12:40:48  1.9657 2015     4</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 5 2015-04-09 12:43:43 39.23245 -123.5588 2015-04-09 12:42:25  7.6620 2015     4</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a><span class="co">#&gt; 6 2015-04-09 12:54:04 39.21667 -123.4842 2015-04-09 12:50:27 21.3146 2015     4</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a><span class="co">#&gt;   day    mtime maxdistBft maxdistCCover nSI_bm ANI_bm nSI_dc ANI_dc</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a><span class="co">#&gt; 1   9 12:34:28          1            10      3     11      1      1</span></span>
+<span id="cb7-33"><a href="#cb7-33"></a><span class="co">#&gt; 2   9 12:37:58          2            10      0      0      0      0</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a><span class="co">#&gt; 3   9 12:40:14          2            10      0      0      0      0</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a><span class="co">#&gt; 4   9 12:40:48          2            20      0      0      0      0</span></span>
+<span id="cb7-36"><a href="#cb7-36"></a><span class="co">#&gt; 5   9 12:42:25          1            20      0      0      0      0</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a><span class="co">#&gt; 6   9 12:50:27          1            20      3     13      0      0</span></span>
 <span id="cb7-38"><a href="#cb7-38"></a></span>
 <span id="cb7-39"><a href="#cb7-39"></a><span class="kw">head</span>(y.eff.sight<span class="op">$</span>sightinfo)</span>
 <span id="cb7-40"><a href="#cb7-40"></a><span class="co">#&gt;   segnum     mlat      mlon Event            DateTime      Lat       Lon</span></span>

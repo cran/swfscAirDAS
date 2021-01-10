@@ -1,6 +1,6 @@
 Package: swfscAirDAS
 Title: Southwest Fisheries Science Center Aerial DAS Data Processing
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: 
     person("Sam", "Woodman", email = "sam.woodman@noaa.gov", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6071-8186"))
 Description: Process and summarize aerial survey 'DAS' data (AirDAS) 
@@ -22,8 +22,8 @@ LazyData: true
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-08-31 22:49:18 UTC; sam.woodman
+Packaged: 2021-01-09 03:49:02 UTC; sam.woodman
 Author: Sam Woodman [aut, cre] (<https://orcid.org/0000-0001-6071-8186>)
 Maintainer: Sam Woodman <sam.woodman@noaa.gov>
 Repository: CRAN
-Date/Publication: 2020-09-07 08:40:03 UTC
+Date/Publication: 2021-01-10 01:10:02 UTC

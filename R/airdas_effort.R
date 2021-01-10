@@ -75,7 +75,11 @@
 #'   \itemize{
 #'     \item segdata: one row for every segment, and columns for information including
 #'       unique segment number, event code that started the associated continuous effort section, 
-#'       start/end/midpoint coordinates, and conditions (e.g. Beaufort)
+#'       the starting and ending line of the segment in the DAS file (stlin, endlin),
+#'       start/end/midpoint coordinates(lat1/lon1, lat2/lon2, and mlat/mlon, respectively),
+#'       the start/end/midpoint date/time of the segment (DateTime1, DateTime2, and mDateTime, respectively;
+#'       mDateTime is the average of DateTime1 and DateTime2), segment length (dist),
+#'       and conditions (e.g. Beaufort)
 #'     \item sightinfo: details for all sightings in \code{x}, including: 
 #'       the unique segment number it is associated with, segment mid points (lat/lon), 
 #'       the 'included' column described in the Details section,
