@@ -1,3 +1,10 @@
+# swfscAirDAS 0.2.3
+
+* swfscAirDAS now depends on R >= 4.0.0 for consistency across DAS packages
+
+* Updated License to CC0 for consistency across DAS packages
+
+
 # swfscAirDAS 0.2.2
 
 * The 'segdata' output of `das_effort` now includes DateTime1 and DateTime2, the date/time of the start and end points of each segment. The column order of the segdata data frame was also slightly changed for consistency

@@ -1,6 +1,6 @@
-4531efd35fbc79ef83eca307ff992ab0 *DESCRIPTION
+2d780f5876211388f31cc7a94a1df4bb *DESCRIPTION
 7448c546905b872d405bef5b99af62c1 *NAMESPACE
-8183a30083e3c9d79af34aaa8b2ca352 *NEWS.md
+e15192541de177090ac29b3901521354 *NEWS.md
 16bae54e4b2ad1e69443f5cfeeee0dcd *R/airdas_check.R
 85f118625b3421037406748b884bc8f2 *R/airdas_chop_condition.R
 060a4a7c215e2cc54a90137b8bcf3b63 *R/airdas_chop_equallength.R
@@ -17,11 +17,11 @@ de97cd6350d905a8fe915b8b4d164e1a *R/airdas_segdata.R
 283e95abb18dccfcb5559c769d570eab *R/airdas_sight.R
 0174d09bbbcb8c0fee3a71a1c37f173f *R/as_airdas_df.R
 18dae60fd2dac95e76847f83196d05ff *R/as_airdas_dfr.R
-9c83adc98e92d343615e48258367bee2 *R/subsetting.R
+16bb70e034b5a7f4b6daeb3a21bdf740 *R/subsetting.R
 3748137afc17200a7e25f0f6e2596b5c *R/swfscAirDAS-internal.R
 f50f4ccd290b2a8eb2475d3d41f0e05f *R/swfscAirDAS-package.R
-06ad7b74637f7b16552b9c2759d55780 *README.md
-e45c89c3ae046255d59f616710310cb5 *build/vignette.rds
+dccf3d3edc23601e2846e5c6df4b4c69 *README.md
+cfe4ea2934071e8d114f3dda5286e5cd *build/vignette.rds
 999212dfb5a330b3f92432671e7283b9 *inst/AirDAS_Format_CARETTA.pdf
 74cdf490d79a900647a0d26462e904c3 *inst/AirDAS_Format_PHOCOENA.pdf
 25cbe926030a2d291a7c4bb5617e065f *inst/AirDAS_Format_TURTLE.pdf
@@ -32,7 +32,7 @@ a66e84f5faa4a164521e493772696d03 *inst/SpCodesAirDAS.DAT
 fbc4405323896ddb34447527892d980a *inst/airdas_sample_randpicks.csv
 79b5ad5667aef79ebd391a0c64993ff0 *inst/doc/swfscAirDAS.R
 525327df963f14b903e5b265027d1168 *inst/doc/swfscAirDAS.Rmd
-b2f8fa614846ef80b298d0e36db7ce5d *inst/doc/swfscAirDAS.html
+e830ea23eb309183373feec6c73f1a2b *inst/doc/swfscAirDAS.html
 8bcbc8824358bb479021327d10d4214f *man/airdas_check.Rd
 c0b88315119d7ec90b71a1b83f7a3c4e *man/airdas_chop_condition.Rd
 10e4924609e0779e13efbb9d27a26c8e *man/airdas_chop_equallength.Rd
@@ -50,7 +50,7 @@ d92ed13e95ffd6abe7100f377643371d *man/airdas_process.Rd
 e95b6d9129abd65682b6b303d535d52b *man/airdas_sight.Rd
 35f65b06bd3d1079bd68af1f695b6355 *man/as_airdas_df.Rd
 406ab9ecff5926211a4267e6bdedd5e9 *man/as_airdas_dfr.Rd
-8335ade5963bbdb983b5ca26e827a3a5 *man/subsetting.Rd
+1277aae87d205163fe01daedd062eab6 *man/subsetting.Rd
 e0701f2b0c23b553523cc0f3e326fad2 *man/swfscAirDAS-package.Rd
 e59cf2e88852fd8187814cd05211ce34 *tests/testthat.R
 56ca0e953768124e69cae2332dd78068 *tests/testthat/test-class.R

@@ -7,9 +7,7 @@
 
 [![CRAN
 version](http://www.r-pkg.org/badges/version/swfscAirDAS)](https://cran.r-project.org/package=swfscAirDAS)
-[![R-CMD-check](https://github.com/smwoodman/swfscAirDAS/workflows/R-CMD-check/badge.svg)](https://github.com/smwoodman/swfscAirDAS/actions)
-<!-- [![Travis build status](https://travis-ci.com/smwoodman/swfscAirDAS.svg?branch=master)](https://travis-ci.com/smwoodman/swfscAirDAS) -->
-<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/smwoodman/swfscAirDAS?branch=master&svg=true)](https://ci.appveyor.com/project/smwoodman/swfscAirDAS) -->
+[![R-CMD-check](https://github.com/smwoodman/swfscAirDAS/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/smwoodman/swfscAirDAS/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This package contains functions designed for processing and analyzing
@@ -51,11 +49,11 @@ swfscAirDAS accepts AirDAS data from several different programs, and
 thus in several different formats: PHOCOENA, CARETTA, and TURTLE. You
 can download PDFs describing these formats at the following links:
 
-  - [PHOCOENA data format
+-   [PHOCOENA data format
     PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_PHOCOENA.pdf)
-  - [CARETTA data format
+-   [CARETTA data format
     PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_CARETTA.pdf)
-  - [TURTLE data format
+-   [TURTLE data format
     PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_TURTLE.pdf)
 
 These PDFs are also included in the package; see
@@ -69,5 +67,21 @@ provided file type. This function is designed to 1) be used for data
 QA/QC after performing a survey and 2) ensure the data format meets all
 of the assumptions made by the rest of the functions in the package. A
 PDF describing the format checks is included in the package; you can
-also [`download the PDF
-here`](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_check.pdf)
+also
+[`download the PDF here`](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_check.pdf)
+
+## Disclaimer
+
+This repository is a scientific product and is not official
+communication of the National Oceanic and Atmospheric Administration, or
+the United States Department of Commerce. All NOAA GitHub project code
+is provided on an ‘as is’ basis and the user assumes responsibility for
+its use. Any claims against the Department of Commerce or Department of
+Commerce bureaus stemming from the use of this GitHub project will be
+governed by all applicable Federal law. Any reference to specific
+commercial products, processes, or services by service mark, trademark,
+manufacturer, or otherwise, does not constitute or imply their
+endorsement, recommendation or favoring by the Department of Commerce.
+The Department of Commerce seal and logo, or the seal and logo of a DOC
+bureau, shall not be used in any manner to imply endorsement of any
+commercial product or activity by DOC or the United States Government.
