@@ -6,15 +6,20 @@
 \alias{airdas_sight.airdas_df}
 \title{Aerial DAS sightings}
 \usage{
-airdas_sight(x)
+airdas_sight(x, ...)
 
-\method{airdas_sight}{data.frame}(x)
+\method{airdas_sight}{data.frame}(x, ...)
 
-\method{airdas_sight}{airdas_df}(x)
+\method{airdas_sight}{airdas_df}(x, angle.min = 12, ...)
 }
 \arguments{
 \item{x}{\code{airdas_df} object; output from \code{\link{airdas_process}}, 
 or a data frame that can be coerced to a \code{airdas_df} object}
+
+\item{...}{ignored}
+
+\item{angle.min}{numeric; the minimum (absolute value) angle 
+for which to consider a sighting a standard sighting. Default is 12}
 }
 \value{
 Data frame with 1) the columns from \code{x}, excluding the 'Data#' columns,
@@ -28,18 +33,19 @@ Data frame with 1) the columns from \code{x}, excluding the 'Data#' columns,
     Sighting number                   \tab SightNo\cr
     Observer that made the sighting   \tab Obs\cr
     Angle of declination              \tab Angle    \tab Left is negative\cr
+    Sighting by standard observer     \tab ObsStd   \tab Logical; described in Details\cr
     Standard sighting                 \tab SightStd \tab Logical; described in Details\cr
     Mixed species sighting            \tab Mixed    \tab Logical\cr
     Species code                      \tab SpCode   \tab All characters converted to lower case\cr
-    Group size of school              \tab GsTotal \tab Only different from GsSp for mixed species sightings\cr
+    Group size of school              \tab GsTotal  \tab Only different from GsSp for mixed species sightings\cr
     Group size of species             \tab GsSp\cr
     Turtle length (feet if numeric)   \tab TurtleSize      \tab \code{NA} for non-"t" events; may be character or numeric\cr
     Turtle travel direction (degrees) \tab TurtleDirection \tab \code{NA} for non-"t" events\cr
     Turtle tail visible?              \tab TurtleTail      \tab \code{NA} for non-"t" events\cr
   }
   
-  The TurtleSize will be of class character is there is any CARETTA data in \code{x}, 
-  and of class numeric otherwise.
+  The TurtleSize will be of class character is there is any 
+  CARETTA data in \code{x}, and of class numeric otherwise.
 }
 \description{
 Extract sighting information from aerial DAS data
@@ -59,10 +65,17 @@ AirDAS events contain specific information in the 'Data#' columns,
    
   Abbreviations used in column names include: Gs = group size, Sp = species, 
   Mixed = mixed species (multi-species) sighting. 
-  A 'standard sighting' ('SightStd') is a sighting 
-  made by ObsL, ObsB, or ObsR (not the data recorder or pilot).   
-  In addition, multi-species group sizes are rounded to 
+  In addition, note that multi-species group sizes are rounded to 
   the nearest whole number using \code{round(, 0)}
+  
+  A 'sighting by a standard observer' ('ObsStd') is a sighting 
+  made by ObsL, ObsB, or ObsR (not the data recorder or pilot).   
+  A 'standard sighting' ('SightStd') is a sighting 
+  that was made while on effort, by a standard observer, 
+  and with the absolute value of the angle of declination 
+  being greater than or equal to \code{angle.min}.   
+  Resights (Events 's') are not considered standard events, 
+  and thus both 'ObsStd' and 'SightStd' will be \code{NA} for 's' events.
 }
 \examples{
 y <- system.file("airdas_sample.das", package = "swfscAirDAS")

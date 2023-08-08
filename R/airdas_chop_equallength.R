@@ -102,10 +102,11 @@ airdas_chop_equallength.data.frame <- function(x, ...) {
 
 #' @name airdas_chop_equallength
 #' @export
-airdas_chop_equallength.airdas_df <- function(x, conditions, seg.km, 
-                                        randpicks.load = NULL, 
-                                        distance.method = NULL, num.cores = NULL, 
-                                        ...) {
+airdas_chop_equallength.airdas_df <- function(
+    x, conditions, seg.km, 
+    randpicks.load = NULL, distance.method = NULL, num.cores = NULL, 
+    ...) 
+{
   #----------------------------------------------------------------------------
   # Input checks
   if (missing(seg.km))
@@ -188,7 +189,7 @@ airdas_chop_equallength.airdas_df <- function(x, conditions, seg.km,
   call.seg.km <- seg.km
   call.r.pos <- r.pos
   call.func1 <- airdas_segdata
-
+  
   # Setup number of cores
   if(is.null(num.cores)) num.cores <- parallel::detectCores() - 1
   if(is.na(num.cores)) num.cores <- 1

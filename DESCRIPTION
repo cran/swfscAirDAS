@@ -1,6 +1,6 @@
 Package: swfscAirDAS
 Title: Southwest Fisheries Science Center Aerial DAS Data Processing
-Version: 0.2.3
+Version: 0.3.0
 Authors@R: 
     person("Sam", "Woodman", email = "sam.woodman@noaa.gov", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6071-8186"))
 Description: Process and summarize aerial survey 'DAS' data (AirDAS) 
@@ -13,16 +13,16 @@ URL: https://smwoodman.github.io/swfscAirDAS/,
         https://github.com/smwoodman/swfscAirDAS/
 BugReports: https://github.com/smwoodman/swfscAirDAS/issues/
 Depends: R (>= 4.0.0)
-Imports: dplyr, lubridate, magrittr, methods, parallel, readr, rlang,
-        stringr, swfscDAS (>= 0.3.0), swfscMisc, tidyr
+Imports: dplyr, lubridate, magrittr, methods, parallel, purrr, readr,
+        rlang, stringr, swfscDAS (>= 0.3.0), swfscMisc, tidyr
 Suggests: knitr, rmarkdown, testthat (>= 2.1.0), tibble
 License: CC0
 Encoding: UTF-8
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2022-06-02 02:47:08 UTC; sam.woodman
+Packaged: 2023-08-08 23:27:03 UTC; sam.woodman
 Author: Sam Woodman [aut, cre] (<https://orcid.org/0000-0001-6071-8186>)
 Maintainer: Sam Woodman <sam.woodman@noaa.gov>
 Repository: CRAN
-Date/Publication: 2022-06-02 03:00:02 UTC
+Date/Publication: 2023-08-08 23:50:02 UTC

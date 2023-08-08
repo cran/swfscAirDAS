@@ -49,12 +49,12 @@ swfscAirDAS accepts AirDAS data from several different programs, and
 thus in several different formats: PHOCOENA, CARETTA, and TURTLE. You
 can download PDFs describing these formats at the following links:
 
--   [PHOCOENA data format
-    PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_PHOCOENA.pdf)
--   [CARETTA data format
-    PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_CARETTA.pdf)
--   [TURTLE data format
-    PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_TURTLE.pdf)
+- [PHOCOENA data format
+  PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_PHOCOENA.pdf)
+- [CARETTA data format
+  PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_CARETTA.pdf)
+- [TURTLE data format
+  PDF](https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_TURTLE.pdf)
 
 These PDFs are also included in the package; see
 [`airdas_format_pdf`](https://smwoodman.github.io/swfscAirDAS/reference/airdas_format_pdf.html)

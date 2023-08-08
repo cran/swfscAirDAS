@@ -48,7 +48,7 @@ y.sight %>%
 y.eff <- airdas_effort(
   y.proc, method = "condition", seg.min.km = 0, 
   dist.method = "greatcircle", conditions = c("Bft", "CCover"), 
-  num.cores = 1
+  num.cores = 1, angle.min = 12, bft.max = 1
 )
 y.eff.sight <- airdas_effort_sight(y.eff, sp.codes = c("bm", "dc"))
 

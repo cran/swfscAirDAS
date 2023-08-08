@@ -16,6 +16,8 @@ airdas_effort(x, ...)
   conditions = NULL,
   distance.method = c("greatcircle", "lawofcosines", "haversine", "vincenty"),
   num.cores = NULL,
+  angle.min = 12,
+  bft.max = 5,
   ...
 )
 }
@@ -27,9 +29,11 @@ or a data frame that can be coerced to a \code{airdas_df} object}
 such as \code{seg.km} or \code{seg.min.km}}
 
 \item{method}{character; method to use to chop AirDAS data into effort segments
-Can be "condition", "equallength", "section", or any partial match thereof (case sensitive)}
+Can be "condition", "equallength", "section", 
+or any partial match thereof (case sensitive)}
 
-\item{conditions}{character vector of names of conditions to include in segdata output.
+\item{conditions}{character vector of names of conditions 
+to include in segdata output.
 These values must be column names from the output of \code{\link{airdas_process}},
 e.g. 'Bft', 'CCover', etc. The default is \code{NULL}, 
 in which case all relevant conditions will be included.
@@ -45,6 +49,12 @@ or any partial match thereof (case sensitive). Default is "greatcircle"}
 Defaults to \code{NULL}, which uses one fewer than the number of cores
 reported by \code{\link[parallel]{detectCores}}
 Using 1 core likely will be faster for smaller datasets}
+
+\item{angle.min}{passed to \code{\link{airdas_sight}}}
+
+\item{bft.max}{numeric; the maximum Beaufort (column 'Bft') for which to 
+mark a sighting as \code{TRUE} in 'included' (see Details). 
+Default is 5.}
 }
 \value{
 List of three data frames: 
@@ -109,12 +119,10 @@ This is the top-level function for chopping processed AirDAS data
   which is used in \code{\link{airdas_effort_sight}} when summarizing
   the number of sightings and animals for selected species.
   \code{\link{airdas_effort_sight}} is a separate function to allow users to
-  personalize the included values as desired for their analysis.
+  personalize the 'included' values as desired for their specific analysis.
   By default, i.e. in the output of this function, 'included' is \code{TRUE} if:
-  the sighting was made when on effort, 
-  by it was a standard sighting (see \code{\link{airdas_sight}}), 
-  in a Beaufort sea state less than or equal to five, 
-  and with a sighting angle less than or equal to 78.
+  the sighting was a standard sighting (see \code{\link{airdas_sight}}) 
+  and in a Beaufort sea state less than or equal to 'btf.max'.
 }
 \examples{
 y <- system.file("airdas_sample.das", package = "swfscAirDAS")

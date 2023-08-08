@@ -16,14 +16,16 @@
 #' @author Sam Woodman \email{sam.woodman@@noaa.gov}
 #' @seealso \url{https://smwoodman.github.io/swfscAirDAS/}
 #'
-#' @importFrom dplyr arrange between bind_cols bind_rows case_when distinct everything filter 
-#'   full_join group_by left_join mutate n right_join select slice starts_with summarise ungroup
+#' @importFrom dplyr arrange between bind_cols bind_rows case_when distinct 
+#'   everything filter full_join group_by if_else
+#'   left_join mutate n right_join select slice starts_with summarise ungroup
 #' @importFrom lubridate year month day tz
 #' @importFrom magrittr %>%
 #' @importFrom methods setOldClass
 #' @importFrom parallel clusterExport detectCores parLapplyLB stopCluster
+#' @importFrom purrr pmap_lgl
 #' @importFrom readr cols col_character read_fwf fwf_positions
-#' @importFrom rlang !! .data
+#' @importFrom rlang !! .data na_lgl
 #' @importFrom stats na.omit runif
 #' @importFrom stringr str_count str_detect str_match_all str_split
 #' @importFrom swfscDAS das_effort_sight distance_greatcircle 

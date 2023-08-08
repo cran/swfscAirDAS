@@ -16,10 +16,11 @@
 #'   If \code{file} contains multiple filenames, then the individual 
 #'   data frames will be combined using \code{\link[base:cbind]{rbind}}
 #'   
-#'   See \code{\link{airdas_format_pdf}} for information about AirDAS format requirements
-#'   for the specific file types (programs)
+#'   See \code{\link{airdas_format_pdf}} for information about 
+#'   AirDAS format requirements for the specific file types (programs)
 #'   
-#' @return An \code{airdas_dfr} object, which is also a data frame, with AirDAS data read into columns.
+#' @return An \code{airdas_dfr} object, which is also a data frame, 
+#'   with AirDAS data read into columns.
 #'   The data are read into the data frame as characters,
 #'   with the following exceptions:
 #'   \tabular{lll}{

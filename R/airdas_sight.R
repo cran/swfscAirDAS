@@ -4,6 +4,9 @@
 #'
 #' @param x \code{airdas_df} object; output from \code{\link{airdas_process}}, 
 #'   or a data frame that can be coerced to a \code{airdas_df} object
+#' @param ... ignored
+#' @param angle.min numeric; the minimum (absolute value) angle 
+#'   for which to consider a sighting a standard sighting. Default is 12
 #' 
 #' @details AirDAS events contain specific information in the 'Data#' columns,
 #'   with the information depending on the event code and file type for that row.
@@ -19,10 +22,17 @@
 #'    
 #'   Abbreviations used in column names include: Gs = group size, Sp = species, 
 #'   Mixed = mixed species (multi-species) sighting. 
-#'   A 'standard sighting' ('SightStd') is a sighting 
-#'   made by ObsL, ObsB, or ObsR (not the data recorder or pilot).   
-#'   In addition, multi-species group sizes are rounded to 
+#'   In addition, note that multi-species group sizes are rounded to 
 #'   the nearest whole number using \code{round(, 0)}
+#'   
+#'   A 'sighting by a standard observer' ('ObsStd') is a sighting 
+#'   made by ObsL, ObsB, or ObsR (not the data recorder or pilot).   
+#'   A 'standard sighting' ('SightStd') is a sighting 
+#'   that was made while on effort, by a standard observer, 
+#'   and with the absolute value of the angle of declination 
+#'   being greater than or equal to \code{angle.min}.   
+#'   Resights (Events 's') are not considered standard events, 
+#'   and thus both 'ObsStd' and 'SightStd' will be \code{NA} for 's' events.
 #'
 #' @return Data frame with 1) the columns from \code{x}, excluding the 'Data#' columns,
 #'   and 2) columns with sighting information extracted from 'Data#' columns as described below.
@@ -35,18 +45,19 @@
 #'     Sighting number                   \tab SightNo\cr
 #'     Observer that made the sighting   \tab Obs\cr
 #'     Angle of declination              \tab Angle    \tab Left is negative\cr
+#'     Sighting by standard observer     \tab ObsStd   \tab Logical; described in Details\cr
 #'     Standard sighting                 \tab SightStd \tab Logical; described in Details\cr
 #'     Mixed species sighting            \tab Mixed    \tab Logical\cr
 #'     Species code                      \tab SpCode   \tab All characters converted to lower case\cr
-#'     Group size of school              \tab GsTotal \tab Only different from GsSp for mixed species sightings\cr
+#'     Group size of school              \tab GsTotal  \tab Only different from GsSp for mixed species sightings\cr
 #'     Group size of species             \tab GsSp\cr
 #'     Turtle length (feet if numeric)   \tab TurtleSize      \tab \code{NA} for non-"t" events; may be character or numeric\cr
 #'     Turtle travel direction (degrees) \tab TurtleDirection \tab \code{NA} for non-"t" events\cr
 #'     Turtle tail visible?              \tab TurtleTail      \tab \code{NA} for non-"t" events\cr
 #'   }
 #'   
-#'   The TurtleSize will be of class character is there is any CARETTA data in \code{x}, 
-#'   and of class numeric otherwise.
+#'   The TurtleSize will be of class character is there is any 
+#'   CARETTA data in \code{x}, and of class numeric otherwise.
 #'
 #' @examples
 #' y <- system.file("airdas_sample.das", package = "swfscAirDAS")
@@ -55,19 +66,19 @@
 #' airdas_sight(y.proc)
 #'
 #' @export
-airdas_sight <- function(x) UseMethod("airdas_sight")
+airdas_sight <- function(x, ...) UseMethod("airdas_sight")
 
 
 #' @name airdas_sight
 #' @export
-airdas_sight.data.frame <- function(x) {
-  airdas_sight(as_airdas_df(x))
+airdas_sight.data.frame <- function(x, ...) {
+  airdas_sight(as_airdas_df(x), ...)
 }
 
 
 #' @name airdas_sight
 #' @export
-airdas_sight.airdas_df <- function(x) {
+airdas_sight.airdas_df <- function(x, angle.min = 12, ...) {
   #----------------------------------------------------------------------------
   ### Filter for and extract sighting data
   event.sight <- c("S", "s", "t")
@@ -78,7 +89,11 @@ airdas_sight.airdas_df <- function(x) {
     filter(.data$Event %in% c(event.sight, event.sight.info)) %>% 
     mutate(sight_cumsum = cumsum(.data$Event %in% event.sight))
   
-  stopifnot(length(event.sight.info) == 1)
+  stopifnot(
+    length(event.sight.info) == 1, 
+    is.numeric(angle.min),
+    angle.min >= 0, angle.min <= 90
+  )
   
   
   #----------------------------------------------------------------------------
@@ -135,9 +150,9 @@ airdas_sight.airdas_df <- function(x) {
   
   ### 2) Extract sighting information based on file type
   sight.df.all <- bind_rows(
-    .airdas_sight_phocoena(filter(sight.df, .data$file_type == "phocoena")), 
-    .airdas_sight_caretta(filter(sight.df, .data$file_type == "caretta")),
-    .airdas_sight_turtle(filter(sight.df, .data$file_type == "turtle"))
+    .airdas_sight_phocoena(filter(sight.df, .data$file_type == "phocoena"), angle.min), 
+    .airdas_sight_caretta(filter(sight.df, .data$file_type == "caretta"), angle.min),
+    .airdas_sight_turtle(filter(sight.df, .data$file_type == "turtle"), angle.min)
   )
   
   # CARETTA data uses "l", "m", "s" code for TurtleSize
@@ -153,10 +168,25 @@ airdas_sight.airdas_df <- function(x) {
 }
 
 
+###############################################################################
+# Helper functions, for consistency across .airdas_sight_ functions below
+.obsStd_lgl <- function(Event, Obs, ObsL, ObsB, ObsR) {
+  if_else(Event == "s", na_lgl,  Obs %in% c(ObsL, ObsB, ObsR))
+}
+
+.sightStd_lgl <- function(OnEffort, ObsStd, Event, Angle, angle.min) {
+  if_else(
+    Event == "s", 
+    na_lgl, 
+    OnEffort & ObsStd & (Event %in% c("S", "t")) & (abs(Angle) >= angle.min)
+  )
+}
+
+
 
 ###############################################################################
 # Extract sighting data from data created using PHOCOENA program
-.airdas_sight_phocoena <- function(sight.df) {
+.airdas_sight_phocoena <- function(sight.df, angle.min) {
   if (!all(sight.df$Event == "S")) 
     stop("Error in processing: not all sighitng rows with file_type ", 
          "PHOCOENA are Event S. ", 
@@ -169,18 +199,23 @@ airdas_sight.airdas_df <- function(x) {
            Angle = as.numeric(.data$Data4), 
            Obs = .data$Data5, 
            GsSp = .data$GsTotal, 
-           SightStd = .data$Obs %in% c(.data$ObsL, .data$ObsB, .data$ObsR), 
+           ObsStd = pmap_lgl(list(.data$Event, .data$Obs, .data$ObsL, 
+                                  .data$ObsB, .data$ObsR), 
+                             .obsStd_lgl), 
+           SightStd = .sightStd_lgl(.data$OnEffort, .data$ObsStd, .data$Event, 
+                                    .data$Angle, angle.min), 
            TurtleSize = NA_character_, 
            TurtleDirection = as.numeric(NA), 
            TurtleTail = NA_character_) %>% 
-    select(.data$idx, .data$SightNo, .data$Obs, .data$Angle, .data$SightStd, 
+    select(.data$idx, .data$SightNo, 
+           .data$Obs, .data$Angle, .data$ObsStd, .data$SightStd, 
            .data$Mixed, .data$SpCode, .data$GsTotal, .data$GsSp, 
            .data$TurtleSize, .data$TurtleDirection, .data$TurtleTail)
 }
 
 
 # Extract sighting data from data created using CARETTA program
-.airdas_sight_caretta <- function(sight.df) {
+.airdas_sight_caretta <- function(sight.df, angle.min) {
   if (!all(sight.df$Event %in% c("S", "t", "s")))
     stop("Error in sight function - incorrect codes. ", 
          "Please report this as an issue")
@@ -192,15 +227,19 @@ airdas_sight.airdas_df <- function(x) {
            Angle = as.numeric(case_when(.data$Event == "S" ~ .data$Data3,
                                         .data$Event == "s" ~ .data$Data2, 
                                         .data$Event == "t" ~ .data$Data3)), 
-           SightStd = ifelse(.data$Event == "s", NA, 
-                             .data$Obs %in% c(.data$ObsL, .data$ObsB, .data$ObsR)), 
+           ObsStd = pmap_lgl(list(.data$Event, .data$Obs, .data$ObsL, 
+                                  .data$ObsB, .data$ObsR), 
+                             .obsStd_lgl), 
+           SightStd = .sightStd_lgl(.data$OnEffort, .data$ObsStd, .data$Event, 
+                                    .data$Angle, angle.min), 
            SpCode = case_when(.data$Event == "S" ~ .data$Data5,
                               .data$Event == "t" ~ .data$Data5), 
            GsSp = case_when(.data$Event == "S" ~ as.numeric(.data$Data4),
                             .data$Event == "t" ~ as.numeric(.data$Data4)), 
            GsTotal = case_when(.data$Event == "S" ~ .data$GsTotal, 
                                .data$Event == "t" ~ .data$GsSp)) %>% 
-    select(.data$idx, .data$SightNo, .data$Obs, .data$Angle, .data$SightStd, 
+    select(.data$idx, .data$SightNo, 
+           .data$Obs, .data$Angle, .data$ObsStd, .data$SightStd, 
            .data$Mixed, .data$SpCode, .data$GsTotal, .data$GsSp)
   
   sight.info.t <- sight.df %>% 
@@ -216,7 +255,7 @@ airdas_sight.airdas_df <- function(x) {
 
 
 # Extract sighting data from data created using TURTLE program
-.airdas_sight_turtle <- function(sight.df) {
+.airdas_sight_turtle <- function(sight.df, angle.min) {
   if (!all(sight.df$Event %in% c("S", "t", "s")))
     stop("Error in sight function - incorrect codes. ", 
          "Please report this as an issue")
@@ -229,15 +268,19 @@ airdas_sight.airdas_df <- function(x) {
            Angle = as.numeric(case_when(.data$Event == "S" ~ .data$Data3,
                                         .data$Event == "s" ~ .data$Data2, 
                                         .data$Event == "t" ~ .data$Data2)), 
-           SightStd = ifelse(.data$Event == "s", NA, 
-                             .data$Obs %in% c(.data$ObsL, .data$ObsB, .data$ObsR)), 
+           ObsStd = pmap_lgl(list(.data$Event, .data$Obs, .data$ObsL, 
+                                  .data$ObsB, .data$ObsR), 
+                             .obsStd_lgl), 
+           SightStd = .sightStd_lgl(.data$OnEffort, .data$ObsStd, .data$Event, 
+                                    .data$Angle, angle.min), 
            SpCode = case_when(.data$Event == "S" ~ .data$Data5,
                               .data$Event == "t" ~ .data$Data3), 
            GsSp = case_when(.data$Event == "S" ~ as.numeric(.data$Data4),
                             .data$Event == "t" ~ 1), 
            GsTotal = case_when(.data$Event == "S" ~ .data$GsTotal, 
                                .data$Event == "t" ~ 1)) %>% 
-    select(.data$idx, .data$SightNo, .data$Obs, .data$Angle, .data$SightStd, 
+    select(.data$idx, .data$SightNo, 
+           .data$Obs, .data$Angle, .data$ObsStd, .data$SightStd, 
            .data$Mixed, .data$SpCode, .data$GsTotal, .data$GsSp)
   
   sight.info.t <- sight.df %>% 

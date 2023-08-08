@@ -1,3 +1,10 @@
+# swfscAirDAS 0.3.0
+
+* `airdas_sight` now has both ObsStd and SightStd columns; SightStd definition updated. `airdas_effort` standardizes the definition for the 'included' column. (#3)
+
+* Added `purrr` as a dependency for `airdas_sight` functionality
+
+
 # swfscAirDAS 0.2.3
 
 * swfscAirDAS now depends on R >= 4.0.0 for consistency across DAS packages
