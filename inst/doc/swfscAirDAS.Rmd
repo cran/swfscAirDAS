@@ -34,7 +34,7 @@ head(readLines(y))
 
 ## Check data format
 
-The first step in processing AirDAS data is to ensure that the DAS file has expected formatting and values, which you can do using the `airdas_check` function. The checks performed by this function are detailed in the function documentation, which can be accessed by running `?airdas_check`. If you aren't sure of the file type (format) of your data, you can check the format PDFs. These PDFs are available online at https://smwoodman.github.io/swfscAirDAS/, or see `?airdas_format_pdf` for how to access a local copy.
+The first step in processing AirDAS data is to ensure that the DAS file has expected formatting and values, which you can do using the `airdas_check` function. The checks performed by this function are detailed in the function documentation, which can be accessed by running `?airdas_check`. If you aren't sure of the file type (format) of your data, you can check the format PDFs. These PDFs are available online at https://swfsc.github.io/swfscAirDAS/, or see `?airdas_format_pdf` for how to access a local copy.
 
 ```{r check, eval=FALSE}
 # Code not run

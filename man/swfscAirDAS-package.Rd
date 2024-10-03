@@ -19,7 +19,7 @@ reading AirDAS data into a data frame, processing this data
 and summarizing sighting and effort information.
 }
 \seealso{
-\url{https://smwoodman.github.io/swfscAirDAS/}
+\url{https://swfsc.github.io/swfscAirDAS/}
 }
 \author{
 Sam Woodman \email{sam.woodman@noaa.gov}

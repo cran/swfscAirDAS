@@ -1,3 +1,10 @@
+# swfscAirDAS 0.3.1
+
+* Moved repo to https://github.com/swfsc, and updated all associated documentation
+
+* Changed license to Apache License (== 2), based on NMFS guidance at https://nmfs-opensci.github.io/GitHub-Guide
+
+
 # swfscAirDAS 0.3.0
 
 * `airdas_sight` now has both ObsStd and SightStd columns; SightStd definition updated. `airdas_effort` standardizes the definition for the 'included' column. (#3)

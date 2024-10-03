@@ -20,27 +20,27 @@
 #'     \item Can be copied from: 
 #'       \code{system.file("AirDAS_Format_PHOCOENA.pdf", package = "swfscAirDAS")}
 #'     \item Can be downloaded from: 
-#'       \url{https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_PHOCOENA.pdf}
+#'       \url{https://github.com/swfsc/swfscAirDAS/blob/master/inst/AirDAS_Format_PHOCOENA.pdf}
 #'   }
 #'   CARETTA
 #'   \itemize{
 #'     \item Can be copied from: 
 #'       \code{system.file("AirDAS_Format_CARETTA.pdf", package = "swfscAirDAS")}
 #'     \item Can be downloaded from: 
-#'       \url{https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_CARETTA.pdf}
+#'       \url{https://github.com/swfsc/swfscAirDAS/blob/master/inst/AirDAS_Format_CARETTA.pdf}
 #'   }
 #'   TURTLE
 #'   \itemize{
 #'     \item Can be copied from: 
 #'       \code{system.file("AirDAS_Format_TURTLE.pdf", package = "swfscAirDAS")}
 #'     \item Can be downloaded from: 
-#'       \url{https://github.com/smwoodman/swfscAirDAS/blob/master/inst/AirDAS_Format_TURTLE.pdf}
+#'       \url{https://github.com/swfsc/swfscAirDAS/blob/master/inst/AirDAS_Format_TURTLE.pdf}
 #'   }
 #'
 #' @return output of \code{\link[base:files]{file.copy}}: 
 #'   \code{TRUE} if writing of file was successful, and \code{FALSE} otherwise
 #'   
-#' @seealso \url{https://smwoodman.github.io/swfscAirDAS/}
+#' @seealso \url{https://swfsc.github.io/swfscAirDAS/}
 #'
 #' @examples
 #' if (interactive()) {
